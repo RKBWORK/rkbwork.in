@@ -7,153 +7,126 @@
 <title>RKB AI | RKB WORK</title>
 
 <style>
-
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
+  font-family:Arial,sans-serif;
 }
 
 body{
-  font-family:Arial,sans-serif;
-  background:#f5f7fb;
+  background:#f4f7fb;
   color:#111827;
 }
 
-/* ================= HEADER ================= */
-
 header{
-  height:68px;
-  background:linear-gradient(135deg,#061a3a,#0756b8);
+  background:linear-gradient(135deg,#06152f,#0b3b82);
   color:white;
+  padding:12px 20px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:8px 18px;
   box-shadow:0 3px 15px rgba(0,0,0,.18);
 }
 
-.brand{
+.logo{
   display:flex;
   align-items:center;
-  gap:11px;
+  gap:10px;
 }
 
-.logo{
-  width:48px;
-  height:48px;
+.logo-circle{
+  width:45px;
+  height:45px;
   border:2px solid #168cff;
   border-radius:50%;
-  background:#061a3a;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  line-height:14px;
+  background:#071a3d;
+  line-height:12px;
 }
 
-.logo strong{
-  font-size:14px;
+.logo-circle span{
+  font-size:12px;
+  font-weight:bold;
 }
 
-.logo small{
-  font-size:8px;
+.logo-circle small{
+  font-size:7px;
 }
 
-.brand h1{
-  font-size:20px;
+.logo-text h1{
+  font-size:19px;
 }
 
-.brand p{
+.logo-text p{
   font-size:10px;
-  color:#cfe5ff;
+  color:#cbd5e1;
   margin-top:3px;
 }
 
-.header-right{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.new-chat{
-  border:1px solid rgba(255,255,255,.35);
-  background:rgba(255,255,255,.12);
-  color:white;
-  padding:9px 12px;
-  border-radius:9px;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-.home{
+.back{
   color:white;
   text-decoration:none;
-  font-weight:bold;
   font-size:13px;
+  font-weight:bold;
 }
 
-/* ================= MAIN ================= */
-
 .container{
-  max-width:900px;
-  margin:22px auto;
-  padding:0 12px;
+  max-width:850px;
+  margin:25px auto;
+  padding:0 15px;
 }
 
 .ai-card{
   background:white;
   border-radius:20px;
   overflow:hidden;
-  box-shadow:0 8px 35px rgba(15,23,42,.12);
+  box-shadow:0 8px 30px rgba(15,23,42,.12);
 }
 
-/* ================= AI TOP ================= */
-
-.ai-header{
-  background:linear-gradient(135deg,#0751ad,#0878f9);
+.ai-top{
+  background:linear-gradient(135deg,#0753ad,#168cff);
   color:white;
+  padding:25px 20px;
   text-align:center;
-  padding:27px 15px;
 }
 
-.ai-logo{
-  width:68px;
-  height:68px;
-  background:white;
-  border-radius:50%;
+.ai-icon{
+  width:62px;
+  height:62px;
   margin:auto;
+  border-radius:50%;
+  background:white;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:38px;
-  box-shadow:0 5px 20px rgba(0,0,0,.18);
+  font-size:34px;
+  margin-bottom:12px;
 }
 
-.ai-header h2{
-  margin-top:13px;
+.ai-top h2{
   font-size:26px;
+  margin-bottom:7px;
 }
 
-.ai-header p{
-  margin-top:6px;
-  color:#dcecff;
+.ai-top p{
+  color:#e0efff;
   font-size:14px;
 }
 
-/* ================= CHAT ================= */
-
 .chat{
-  height:500px;
+  height:430px;
   overflow-y:auto;
-  padding:22px;
+  padding:20px;
   background:#f8fafc;
-  scroll-behavior:smooth;
 }
 
 .message{
   display:flex;
-  margin-bottom:20px;
+  margin-bottom:16px;
 }
 
 .message.ai{
@@ -164,15 +137,12 @@ header{
   justify-content:flex-end;
 }
 
-.message-wrap{
-  max-width:78%;
-}
-
 .bubble{
-  padding:13px 16px;
-  border-radius:16px;
-  font-size:15px;
-  line-height:1.6;
+  max-width:80%;
+  padding:12px 15px;
+  border-radius:15px;
+  line-height:1.55;
+  font-size:14px;
   white-space:pre-wrap;
   word-wrap:break-word;
 }
@@ -181,395 +151,240 @@ header{
   background:white;
   border:1px solid #e5e7eb;
   border-bottom-left-radius:4px;
-  color:#1f2937;
 }
 
 .user .bubble{
-  background:#0756b8;
+  background:#0753ad;
   color:white;
   border-bottom-right-radius:4px;
 }
 
-/* COPY */
-
-.copy-btn{
-  border:0;
-  background:transparent;
-  color:#64748b;
-  font-size:12px;
-  margin-top:5px;
-  cursor:pointer;
-  padding:3px 5px;
-}
-
-.copy-btn:hover{
-  color:#0756b8;
-}
-
-/* ================= TYPING ================= */
-
-.typing{
-  display:flex;
+.preview{
+  display:none;
+  padding:10px 15px;
+  background:#eef6ff;
+  border-top:1px solid #dbeafe;
   align-items:center;
-  gap:5px;
 }
 
-.dot{
-  width:7px;
-  height:7px;
-  background:#64748b;
-  border-radius:50%;
-  animation:blink 1.2s infinite;
+.preview img{
+  width:65px;
+  height:65px;
+  object-fit:cover;
+  border-radius:10px;
+  border:2px solid #168cff;
 }
 
-.dot:nth-child(2){
-  animation-delay:.2s;
-}
-
-.dot:nth-child(3){
-  animation-delay:.4s;
-}
-
-@keyframes blink{
-
-  0%,80%,100%{
-    opacity:.3;
-  }
-
-  40%{
-    opacity:1;
-  }
-
-}
-
-/* ================= SUGGESTIONS ================= */
-
-.suggestions{
-  padding:10px 15px 2px;
-  background:#f8fafc;
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-}
-
-.suggestion{
-  white-space:nowrap;
-  border:1px solid #dbe3ef;
-  background:white;
-  color:#334155;
-  border-radius:20px;
+.preview button{
+  margin-left:10px;
+  border:0;
+  background:#dc2626;
+  color:white;
   padding:8px 12px;
-  font-size:12px;
+  border-radius:7px;
   cursor:pointer;
 }
-
-.suggestion:hover{
-  border-color:#0756b8;
-  color:#0756b8;
-}
-
-/* ================= INPUT ================= */
 
 .input-area{
-  padding:13px;
-  background:white;
+  padding:12px;
   border-top:1px solid #e5e7eb;
+  background:white;
 }
 
 .input-box{
   display:flex;
-  align-items:flex-end;
-  gap:8px;
+  align-items:center;
+  gap:7px;
   background:#f1f5f9;
-  border:1px solid #dbe3ef;
-  border-radius:16px;
-  padding:7px;
+  border-radius:13px;
+  padding:6px;
 }
 
-textarea{
+.input-box textarea{
   flex:1;
   border:0;
   outline:0;
-  resize:none;
   background:transparent;
-  padding:11px;
+  resize:none;
+  padding:10px;
   font-size:15px;
-  min-height:45px;
-  max-height:130px;
+  min-height:44px;
+  max-height:120px;
+}
+
+.icon-btn{
+  width:43px;
+  height:43px;
+  border:0;
+  border-radius:10px;
+  background:white;
+  cursor:pointer;
+  font-size:20px;
+  flex-shrink:0;
 }
 
 .send{
-  width:45px;
-  height:45px;
-  border:0;
-  border-radius:12px;
-  background:#0756b8;
+  background:#0753ad;
   color:white;
-  font-size:21px;
-  cursor:pointer;
-}
-
-.send:hover{
-  background:#06428e;
 }
 
 .send:disabled{
-  background:#94a3b8;
-  cursor:not-allowed;
+  opacity:.5;
 }
-
-/* ================= INFO ================= */
 
 .info{
   margin-top:20px;
   background:white;
-  border-radius:16px;
   padding:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,.06);
+  border-radius:15px;
+  box-shadow:0 5px 18px rgba(0,0,0,.06);
 }
 
 .info h3{
-  color:#0756b8;
   margin-bottom:8px;
+  color:#0753ad;
 }
 
 .info p{
   color:#64748b;
   line-height:1.6;
-  font-size:14px;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-  margin-top:30px;
-  background:#061a3a;
-  color:#b7c5d9;
-  text-align:center;
-  padding:19px;
   font-size:13px;
 }
 
-/* ================= MOBILE ================= */
+footer{
+  margin-top:35px;
+  background:#061229;
+  color:#94a3b8;
+  text-align:center;
+  padding:20px;
+  font-size:12px;
+}
 
 @media(max-width:600px){
 
   header{
-    height:62px;
-    padding:7px 10px;
+    padding:10px 12px;
   }
 
-  .logo{
-    width:43px;
-    height:43px;
+  .logo-circle{
+    width:40px;
+    height:40px;
   }
 
-  .brand h1{
+  .logo-text h1{
     font-size:17px;
   }
 
-  .brand p{
-    font-size:9px;
-  }
-
-  .new-chat{
-    padding:7px 9px;
-    font-size:11px;
-  }
-
-  .home{
-    font-size:11px;
+  .back{
+    font-size:12px;
   }
 
   .container{
-    margin:12px auto;
-    padding:0 7px;
+    margin:15px auto;
+    padding:0 10px;
   }
 
-  .ai-card{
-    border-radius:17px;
+  .ai-top{
+    padding:22px 15px;
   }
 
-  .ai-header{
-    padding:24px 10px;
-  }
-
-  .ai-logo{
-    width:62px;
-    height:62px;
-    font-size:34px;
-  }
-
-  .ai-header h2{
+  .ai-top h2{
     font-size:23px;
   }
 
   .chat{
-    height:470px;
+    height:430px;
     padding:15px;
   }
 
-  .message-wrap{
-    max-width:89%;
-  }
-
   .bubble{
+    max-width:90%;
+    font-size:13px;
+  }
+
+  .input-box textarea{
     font-size:14px;
-    padding:12px 13px;
   }
-
-  textarea{
-    font-size:14px;
-  }
-
 }
-
-/* VERY SMALL MOBILE */
-
-@media(max-width:380px){
-
-  .home{
-    display:none;
-  }
-
-  .new-chat{
-    font-size:10px;
-  }
-
-}
-
 </style>
 </head>
 
-
 <body>
-
-<!-- ================= HEADER ================= -->
 
 <header>
 
-  <div class="brand">
+  <div class="logo">
 
-    <div class="logo">
-      <strong>RKB</strong>
+    <div class="logo-circle">
+      <span>RKB</span>
       <small>WORK</small>
     </div>
 
-    <div>
+    <div class="logo-text">
       <h1>RKB AI</h1>
       <p>RKB WORK Assistant</p>
     </div>
 
   </div>
 
-  <div class="header-right">
-
-    <button
-      class="new-chat"
-      onclick="newChat()">
-      ＋ New Chat
-    </button>
-
-    <a
-      href="index.html"
-      class="home">
-      ← Home
-    </a>
-
-  </div>
+  <a href="index.html" class="back">
+    ← Home
+  </a>
 
 </header>
-
-
-<!-- ================= MAIN ================= -->
 
 <main class="container">
 
   <div class="ai-card">
 
-    <!-- AI HEADER -->
+    <div class="ai-top">
 
-    <div class="ai-header">
-
-      <div class="ai-logo">
+      <div class="ai-icon">
         🤖
       </div>
 
       <h2>Welcome to RKB AI!</h2>
 
-      <p>
-        Your smart assistant from RKB WORK
-      </p>
+      <p>How can I help you today?</p>
 
     </div>
 
-
-    <!-- CHAT -->
-
-    <div
-      class="chat"
-      id="chat">
+    <div class="chat" id="chat">
 
       <div class="message ai">
+        <div class="bubble">👋 Welcome to RKB AI!
 
-        <div class="message-wrap">
-
-          <div class="bubble">
-👋 Hello! Welcome to <b>RKB AI</b>.
-
-I am your RKB WORK AI assistant.
-
-You can ask me questions in:
-• English
-• Hindi
-• Odia
-
-I can help you with RKB WORK services, CSC, Aadhaar, PAN, Electrical, Transport and general questions. 😊
-          </div>
-
-        </div>
-
+How can I help you today?</div>
       </div>
 
     </div>
 
+    <div class="preview" id="preview">
 
-    <!-- SUGGESTIONS -->
+      <img id="previewImage" src="" alt="Selected image">
 
-    <div class="suggestions">
-
-      <button
-        class="suggestion"
-        onclick="useSuggestion('RKB WORK ke services kya hain?')">
-        RKB WORK services
-      </button>
-
-      <button
-        class="suggestion"
-        onclick="useSuggestion('PAN card ke liye kya documents chahiye?')">
-        PAN documents
-      </button>
-
-      <button
-        class="suggestion"
-        onclick="useSuggestion('Aadhaar ke baare mein batao')">
-        Aadhaar
-      </button>
-
-      <button
-        class="suggestion"
-        onclick="useSuggestion('RKB WORK ka contact kaise kare?')">
-        Contact
+      <button onclick="removeImage()">
+        Remove
       </button>
 
     </div>
 
-
-    <!-- INPUT -->
-
     <div class="input-area">
 
       <div class="input-box">
+
+        <button
+          class="icon-btn"
+          title="Upload photo"
+          onclick="document.getElementById('imageInput').click()">
+          📷
+        </button>
+
+        <input
+          type="file"
+          id="imageInput"
+          accept="image/*"
+          hidden>
 
         <textarea
           id="question"
@@ -577,8 +392,9 @@ I can help you with RKB WORK services, CSC, Aadhaar, PAN, Electrical, Transport 
           rows="1"></textarea>
 
         <button
-          id="sendButton"
-          class="send"
+          id="sendBtn"
+          class="icon-btn send"
+          title="Send"
           onclick="sendMessage()">
           ↑
         </button>
@@ -589,338 +405,293 @@ I can help you with RKB WORK services, CSC, Aadhaar, PAN, Electrical, Transport 
 
   </div>
 
-
-  <!-- INFO -->
-
   <div class="info">
 
     <h3>🤖 RKB AI</h3>
 
     <p>
-      Ask your questions in English, Hindi, Odia or another
-      language. RKB AI will automatically detect your language
-      and respond accordingly.
+      Ask your questions in English, Hindi, Odia or
+      another language. RKB AI will automatically
+      detect your language and respond accordingly.
     </p>
 
   </div>
 
 </main>
 
-
 <footer>
   © 2026 RKB WORK • RKB AI
 </footer>
 
-
 <script>
 
-/* ==================================================
-   RKB AI CLOUDFLARE WORKER
-   ================================================== */
+/* =========================================
+   CLOUDFLARE WORKER
+   ========================================= */
 
-const API_URL =
-"https://rkb-ai.biswanathpradhan006.workers.dev";
+const API_URL = "https://dhan006.workers.dev";
 
 
-const chat =
-document.getElementById("chat");
+/* VARIABLES */
+
+let selectedImage = null;
+
+const imageInput =
+  document.getElementById("imageInput");
+
+const preview =
+  document.getElementById("preview");
+
+const previewImage =
+  document.getElementById("previewImage");
 
 const question =
-document.getElementById("question");
+  document.getElementById("question");
 
-const sendButton =
-document.getElementById("sendButton");
+const chat =
+  document.getElementById("chat");
+
+const sendBtn =
+  document.getElementById("sendBtn");
 
 
-/* ================= ADD MESSAGE ================= */
+/* =========================================
+   IMAGE SELECT
+   ========================================= */
+
+imageInput.addEventListener("change", function(){
+
+  const file = this.files[0];
+
+  if(!file) return;
+
+  selectedImage = file;
+
+  const reader = new FileReader();
+
+  reader.onload = function(e){
+
+    previewImage.src = e.target.result;
+
+    preview.style.display = "flex";
+
+  };
+
+  reader.readAsDataURL(file);
+
+});
+
+
+/* =========================================
+   REMOVE IMAGE
+   ========================================= */
+
+function removeImage(){
+
+  selectedImage = null;
+
+  imageInput.value = "";
+
+  preview.style.display = "none";
+
+  previewImage.src = "";
+
+}
+
+
+/* =========================================
+   ADD MESSAGE
+   ========================================= */
 
 function addMessage(text,type){
 
   const message =
-  document.createElement("div");
+    document.createElement("div");
 
   message.className =
-  "message " + type;
-
-
-  const wrap =
-  document.createElement("div");
-
-  wrap.className =
-  "message-wrap";
-
+    "message " + type;
 
   const bubble =
-  document.createElement("div");
+    document.createElement("div");
 
-  bubble.className =
-  "bubble";
+  bubble.className = "bubble";
 
-  bubble.textContent =
-  text;
+  bubble.textContent = text;
 
-
-  wrap.appendChild(bubble);
-
-
-  /* COPY BUTTON FOR AI */
-
-  if(type === "ai"){
-
-    const copy =
-    document.createElement("button");
-
-    copy.className =
-    "copy-btn";
-
-    copy.textContent =
-    "📋 Copy";
-
-    copy.onclick =
-    function(){
-
-      navigator.clipboard
-      .writeText(text)
-      .then(function(){
-
-        copy.textContent =
-        "✓ Copied";
-
-        setTimeout(function(){
-
-          copy.textContent =
-          "📋 Copy";
-
-        },1500);
-
-      });
-
-    };
-
-    wrap.appendChild(copy);
-
-  }
-
-
-  message.appendChild(wrap);
+  message.appendChild(bubble);
 
   chat.appendChild(message);
 
   chat.scrollTop =
-  chat.scrollHeight;
+    chat.scrollHeight;
+
 }
 
 
-/* ================= TYPING ================= */
+/* =========================================
+   LOADING
+   ========================================= */
 
-function showTyping(){
+function addLoading(){
 
   const message =
-  document.createElement("div");
+    document.createElement("div");
 
-  message.id =
-  "typingMessage";
+  message.className = "message ai";
 
-  message.className =
-  "message ai";
+  message.id = "loadingMessage";
 
-  message.innerHTML = `
-    <div class="message-wrap">
-      <div class="bubble">
-        <div class="typing">
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </div>
-      </div>
-    </div>
-  `;
+  message.innerHTML =
+    '<div class="bubble">🤖 RKB AI is thinking...</div>';
 
   chat.appendChild(message);
 
   chat.scrollTop =
-  chat.scrollHeight;
+    chat.scrollHeight;
+
 }
 
 
-function removeTyping(){
+function removeLoading(){
 
-  const typing =
-  document.getElementById(
-    "typingMessage"
-  );
+  const loading =
+    document.getElementById("loadingMessage");
 
-  if(typing){
-    typing.remove();
+  if(loading){
+    loading.remove();
   }
 
 }
 
 
-/* ================= SEND ================= */
+/* =========================================
+   SEND MESSAGE
+   ========================================= */
 
 async function sendMessage(){
 
   const text =
-  question.value.trim();
+    question.value.trim();
 
+  if(!text && !selectedImage){
 
-  if(!text){
+    alert(
+      "Please type a question or upload a photo."
+    );
+
     return;
+
   }
 
+  /* USER MESSAGE */
 
-  /* USER */
+  if(text){
 
-  addMessage(
-    text,
-    "user"
-  );
+    addMessage(
+      text,
+      "user"
+    );
 
+  }
+
+  if(selectedImage){
+
+    addMessage(
+      "📷 Photo selected",
+      "user"
+    );
+
+  }
 
   question.value = "";
 
-  question.style.height =
-  "auto";
+  removeImage();
 
-  sendButton.disabled =
-  true;
+  sendBtn.disabled = true;
 
-
-  showTyping();
+  addLoading();
 
 
   try{
 
     const response =
-    await fetch(
-      API_URL,
-      {
-        method:"POST",
+      await fetch(
+        API_URL,
+        {
+          method:"POST",
 
-        headers:{
-          "Content-Type":
-          "application/json"
-        },
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
 
-        body:JSON.stringify({
-          message:text
-        })
-      }
-    );
+          body:JSON.stringify({
+
+            message:
+              text ||
+              "Please help me with this photo."
+
+          })
+
+        }
+      );
 
 
     const data =
-    await response.json();
+      await response.json();
 
 
-    removeTyping();
+    removeLoading();
 
 
     if(!response.ok){
 
       throw new Error(
         data.error ||
-        "AI server error"
-      );
-
-    }
-
-
-    const reply =
-    data.message ||
-    data.response;
-
-
-    if(!reply){
-
-      throw new Error(
-        "Empty AI response"
+        "AI request failed"
       );
 
     }
 
 
     addMessage(
-      reply,
+
+      data.message ||
+      "Sorry, I could not generate a reply.",
+
       "ai"
+
     );
 
 
   }catch(error){
 
-    console.error(
-      "RKB AI Error:",
-      error
-    );
-
-
-    removeTyping();
-
+    removeLoading();
 
     addMessage(
-      "❌ RKB AI se connection mein problem aa gayi. Please dobara try karein.",
+
+      "❌ RKB AI connection error.\n\n" +
+      "Worker se connection nahi ho pa raha hai. " +
+      "Cloudflare Worker URL check kijiye.",
+
       "ai"
+
     );
+
+    console.error(error);
 
   }
 
 
-  sendButton.disabled =
-  false;
-
-  question.focus();
+  sendBtn.disabled = false;
 
 }
 
 
-/* ================= SUGGESTION ================= */
-
-function useSuggestion(text){
-
-  question.value =
-  text;
-
-  question.focus();
-
-  sendMessage();
-
-}
-
-
-/* ================= NEW CHAT ================= */
-
-function newChat(){
-
-  chat.innerHTML = `
-
-    <div class="message ai">
-
-      <div class="message-wrap">
-
-        <div class="bubble">
-👋 Hello! Welcome to <b>RKB AI</b>.
-
-New chat started. 😊
-
-How can I help you today?
-        </div>
-
-      </div>
-
-    </div>
-
-  `;
-
-  question.value =
-  "";
-
-  question.focus();
-
-}
-
-
-/* ================= ENTER ================= */
+/* =========================================
+   ENTER = SEND
+   SHIFT + ENTER = NEW LINE
+   ========================================= */
 
 question.addEventListener(
   "keydown",
@@ -941,20 +712,21 @@ question.addEventListener(
 );
 
 
-/* ================= AUTO RESIZE ================= */
+/* =========================================
+   TEXTAREA AUTO SIZE
+   ========================================= */
 
 question.addEventListener(
   "input",
   function(){
 
-    this.style.height =
-    "auto";
+    this.style.height = "auto";
 
     this.style.height =
-    Math.min(
-      this.scrollHeight,
-      130
-    ) + "px";
+      Math.min(
+        this.scrollHeight,
+        120
+      ) + "px";
 
   }
 );

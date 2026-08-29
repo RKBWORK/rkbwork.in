@@ -426,10 +426,12 @@ How can I help you today?</div>
 <script>
 
 /* =========================================
-   CLOUDFLARE WORKER
+   STEP 1 — CORRECT CLOUDFLARE WORKER URL
    ========================================= */
 
-const API_URL = "https://rkb-ai.biswanathpradhan006.workers.dev";
+const API_URL =
+  "https://rkb-ai.biswanathpradhan006.workers.dev";
+
 
 /* VARIABLES */
 
@@ -513,9 +515,11 @@ function addMessage(text,type){
   const bubble =
     document.createElement("div");
 
-  bubble.className = "bubble";
+  bubble.className =
+    "bubble";
 
-  bubble.textContent = text;
+  bubble.textContent =
+    text;
 
   message.appendChild(bubble);
 
@@ -523,7 +527,6 @@ function addMessage(text,type){
 
   chat.scrollTop =
     chat.scrollHeight;
-
 }
 
 
@@ -536,9 +539,11 @@ function addLoading(){
   const message =
     document.createElement("div");
 
-  message.className = "message ai";
+  message.className =
+    "message ai";
 
-  message.id = "loadingMessage";
+  message.id =
+    "loadingMessage";
 
   message.innerHTML =
     '<div class="bubble">🤖 RKB AI is thinking...</div>';
@@ -547,14 +552,15 @@ function addLoading(){
 
   chat.scrollTop =
     chat.scrollHeight;
-
 }
 
 
 function removeLoading(){
 
   const loading =
-    document.getElementById("loadingMessage");
+    document.getElementById(
+      "loadingMessage"
+    );
 
   if(loading){
     loading.remove();
@@ -564,13 +570,14 @@ function removeLoading(){
 
 
 /* =========================================
-   SEND MESSAGE
+   STEP 2 — SEND MESSAGE
    ========================================= */
 
 async function sendMessage(){
 
   const text =
     question.value.trim();
+
 
   if(!text && !selectedImage){
 
@@ -582,7 +589,8 @@ async function sendMessage(){
 
   }
 
-  /* USER MESSAGE */
+
+  /* SHOW USER MESSAGE */
 
   if(text){
 
@@ -593,6 +601,7 @@ async function sendMessage(){
 
   }
 
+
   if(selectedImage){
 
     addMessage(
@@ -601,6 +610,7 @@ async function sendMessage(){
     );
 
   }
+
 
   question.value = "";
 
@@ -625,13 +635,10 @@ async function sendMessage(){
           },
 
           body:JSON.stringify({
-
             message:
               text ||
               "Please help me with this photo."
-
           })
-
         }
       );
 
@@ -643,23 +650,42 @@ async function sendMessage(){
     removeLoading();
 
 
+    console.log(
+      "RKB AI RESPONSE:",
+      data
+    );
+
+
     if(!response.ok){
 
       throw new Error(
+        data.details ||
         data.error ||
-        "AI request failed"
+        "Worker error"
+      );
+
+    }
+
+
+    const reply =
+      data.message ||
+      data.response ||
+      data.result ||
+      data.text;
+
+
+    if(!reply){
+
+      throw new Error(
+        "AI response empty"
       );
 
     }
 
 
     addMessage(
-
-      data.message ||
-      "Sorry, I could not generate a reply.",
-
+      reply,
       "ai"
-
     );
 
 
@@ -667,22 +693,24 @@ async function sendMessage(){
 
     removeLoading();
 
-    addMessage(
-
-      "❌ RKB AI connection error.\n\n" +
-      "Worker se connection nahi ho pa raha hai. " +
-      "Cloudflare Worker URL check kijiye.",
-
-      "ai"
-
+    console.error(
+      "RKB AI ERROR:",
+      error
     );
 
-    console.error(error);
+
+    addMessage(
+      "❌ RKB AI Error\n\n" +
+      error.message,
+      "ai"
+    );
 
   }
 
 
   sendBtn.disabled = false;
+
+  question.focus();
 
 }
 
@@ -712,14 +740,15 @@ question.addEventListener(
 
 
 /* =========================================
-   TEXTAREA AUTO SIZE
+   AUTO RESIZE
    ========================================= */
 
 question.addEventListener(
   "input",
   function(){
 
-    this.style.height = "auto";
+    this.style.height =
+      "auto";
 
     this.style.height =
       Math.min(

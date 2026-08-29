@@ -23,7 +23,7 @@ body{
 header{
   background:linear-gradient(135deg,#071a3d,#0b3b82);
   color:white;
-  padding:18px 20px;
+  padding:15px 20px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -67,11 +67,11 @@ header{
 /* MAIN */
 .container{
   max-width:850px;
-  margin:35px auto;
+  margin:30px auto;
   padding:0 16px;
 }
 
-/* AI CARD */
+/* CARD */
 .ai-card{
   background:white;
   border-radius:20px;
@@ -79,30 +79,30 @@ header{
   box-shadow:0 8px 30px rgba(15,23,42,.10);
 }
 
-/* AI TOP */
+/* TOP */
 .ai-top{
   background:linear-gradient(135deg,#0b3b82,#2563eb);
   color:white;
-  padding:28px 22px;
+  padding:25px 20px;
   text-align:center;
 }
 
 .ai-icon{
-  width:70px;
-  height:70px;
+  width:65px;
+  height:65px;
   margin:auto;
   border-radius:50%;
   background:white;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:38px;
-  margin-bottom:15px;
+  font-size:35px;
+  margin-bottom:12px;
 }
 
 .ai-top h2{
-  font-size:28px;
-  margin-bottom:8px;
+  font-size:27px;
+  margin-bottom:7px;
 }
 
 .ai-top p{
@@ -135,8 +135,10 @@ header{
   max-width:78%;
   padding:13px 16px;
   border-radius:15px;
-  line-height:1.5;
+  line-height:1.55;
   font-size:15px;
+  white-space:pre-wrap;
+  word-wrap:break-word;
 }
 
 .ai .bubble{
@@ -151,28 +153,36 @@ header{
   border-bottom-right-radius:4px;
 }
 
-/* UPLOAD PREVIEW */
-.preview{
-  display:none;
-  padding:12px 20px;
-  background:#eef5ff;
-  border-top:1px solid #dbeafe;
+/* TYPING */
+.typing{
+  display:flex;
+  gap:5px;
+  padding:5px 2px;
 }
 
-.preview img{
-  width:70px;
-  height:70px;
-  object-fit:cover;
-  border-radius:10px;
+.typing span{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#64748b;
+  animation:typing 1.2s infinite;
 }
 
-.preview button{
-  margin-left:10px;
-  border:0;
-  background:#dc2626;
-  color:white;
-  padding:7px 10px;
-  border-radius:6px;
+.typing span:nth-child(2){
+  animation-delay:.2s;
+}
+
+.typing span:nth-child(3){
+  animation-delay:.4s;
+}
+
+@keyframes typing{
+  0%,80%,100%{
+    opacity:.25;
+  }
+  40%{
+    opacity:1;
+  }
 }
 
 /* INPUT */
@@ -187,7 +197,7 @@ header{
   align-items:center;
   gap:8px;
   background:#f1f5f9;
-  border-radius:12px;
+  border-radius:14px;
   padding:7px;
 }
 
@@ -200,6 +210,7 @@ header{
   padding:10px;
   font-size:15px;
   min-height:45px;
+  max-height:130px;
 }
 
 .icon-btn{
@@ -209,7 +220,7 @@ header{
   border-radius:9px;
   background:white;
   cursor:pointer;
-  font-size:20px;
+  font-size:19px;
 }
 
 .send{
@@ -221,17 +232,22 @@ header{
   background:#082d65;
 }
 
+.send:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
 /* INFO */
 .info{
-  margin-top:25px;
+  margin-top:22px;
   background:white;
-  padding:22px;
+  padding:20px;
   border-radius:15px;
   box-shadow:0 5px 18px rgba(0,0,0,.06);
 }
 
 .info h3{
-  margin-bottom:10px;
+  margin-bottom:8px;
 }
 
 .info p{
@@ -242,11 +258,11 @@ header{
 
 /* FOOTER */
 footer{
-  margin-top:40px;
+  margin-top:35px;
   background:#061229;
   color:#94a3b8;
   text-align:center;
-  padding:22px;
+  padding:20px;
   font-size:13px;
 }
 
@@ -254,11 +270,15 @@ footer{
 @media(max-width:600px){
 
   header{
-    padding:15px;
+    padding:13px 15px;
   }
 
   .logo h1{
     font-size:18px;
+  }
+
+  .logo p{
+    font-size:10px;
   }
 
   .back{
@@ -266,19 +286,22 @@ footer{
   }
 
   .container{
-    margin:20px auto;
+    margin:15px auto;
+    padding:0 10px;
   }
 
   .ai-top h2{
-    font-size:24px;
+    font-size:23px;
   }
 
   .chat{
-    height:430px;
+    height:450px;
+    padding:16px;
   }
 
   .bubble{
     max-width:88%;
+    font-size:14px;
   }
 
   .input-box textarea{
@@ -314,172 +337,141 @@ footer{
 
 <main class="container">
 
-  <div class="ai-card">
+<div class="ai-card">
 
-    <div class="ai-top">
+  <div class="ai-top">
 
-      <div class="ai-icon">
-        🤖
-      </div>
-
-      <h2>Ask RKB AI</h2>
-
-      <p>
-        Ask your question or upload a photo.
-        RKB AI will assist you.
-      </p>
-
+    <div class="ai-icon">
+      🤖
     </div>
 
+    <h2>Welcome to RKB AI!</h2>
 
-    <!-- CHAT -->
+    <p>
+      How can I help you today?
+    </p>
 
-    <div class="chat" id="chat">
+  </div>
 
-      <div class="message ai">
 
-        <div class="bubble">
-          👋 Hello! I am <strong>RKB AI</strong>.<br><br>
-          You can ask me about RKB WORK services,
-          Aadhaar, PAN, CSC, Transport, Electrical
-          and other available services.
-        </div>
+  <!-- CHAT -->
 
+  <div class="chat" id="chat">
+
+    <div class="message ai">
+
+      <div class="bubble">
+👋 Welcome to RKB AI!
+
+How can I help you today?
       </div>
 
     </div>
 
+  </div>
 
-    <!-- IMAGE PREVIEW -->
 
-    <div class="preview" id="preview">
+  <!-- INPUT -->
 
-      <img id="previewImage" src="" alt="Uploaded image">
+  <div class="input-area">
 
-      <button onclick="removeImage()">
-        Remove
+    <div class="input-box">
+
+      <textarea
+        id="question"
+        placeholder="Message RKB AI..."
+        rows="1"></textarea>
+
+      <button
+        class="icon-btn send"
+        id="sendButton"
+        onclick="sendMessage()">
+        ↑
       </button>
 
     </div>
 
-
-    <!-- INPUT -->
-
-    <div class="input-area">
-
-      <div class="input-box">
-
-        <button
-          class="icon-btn"
-          onclick="document.getElementById('imageInput').click()">
-          📷
-        </button>
-
-        <input
-          type="file"
-          id="imageInput"
-          accept="image/*"
-          hidden>
-
-        <textarea
-          id="question"
-          placeholder="Ask RKB AI anything..."
-          rows="1"></textarea>
-
-        <button
-          class="icon-btn send"
-          onclick="sendMessage()">
-          ➤
-        </button>
-
-      </div>
-
-    </div>
-
   </div>
 
+</div>
 
-  <div class="info">
 
-    <h3>🤖 About RKB AI</h3>
+<div class="info">
 
-    <p>
-      RKB AI is designed to assist visitors with
-      information about RKB WORK and its available
-      services. You can type a question or select
-      a photo using the camera button.
-    </p>
+  <h3>🤖 RKB AI</h3>
 
-  </div>
+  <p>
+    Ask your questions in English, Hindi, Odia,
+    or another language. RKB AI will automatically
+    detect your language and respond accordingly.
+  </p>
+
+</div>
 
 </main>
 
 
 <footer>
-
-  © 2026 RKB WORK • RKB AI
-
+© 2026 RKB WORK • RKB AI
 </footer>
 
 
 <script>
 
-let selectedImage = null;
+/*
+  YOUR CLOUDFLARE WORKER
+*/
+const WORKER_URL =
+"https://rkb-ai.biswanathpradhan006.workers.dev";
 
-const imageInput =
-  document.getElementById("imageInput");
-
-const preview =
-  document.getElementById("preview");
-
-const previewImage =
-  document.getElementById("previewImage");
 
 const question =
-  document.getElementById("question");
+document.getElementById("question");
 
 const chat =
-  document.getElementById("chat");
+document.getElementById("chat");
+
+const sendButton =
+document.getElementById("sendButton");
 
 
-/* IMAGE SELECT */
+/* ENTER TO SEND */
 
-imageInput.addEventListener("change", function(){
+question.addEventListener(
+  "keydown",
+  function(event){
 
-  const file = this.files[0];
+    if(
+      event.key === "Enter" &&
+      !event.shiftKey
+    ){
 
-  if(!file) return;
+      event.preventDefault();
 
-  selectedImage = file;
+      sendMessage();
 
-  const reader = new FileReader();
+    }
 
-  reader.onload = function(e){
-
-    previewImage.src = e.target.result;
-
-    preview.style.display = "block";
-
-  };
-
-  reader.readAsDataURL(file);
-
-});
+  }
+);
 
 
-/* REMOVE IMAGE */
+/* AUTO RESIZE */
 
-function removeImage(){
+question.addEventListener(
+  "input",
+  function(){
 
-  selectedImage = null;
+    this.style.height = "auto";
 
-  imageInput.value = "";
+    this.style.height =
+      Math.min(
+        this.scrollHeight,
+        130
+      ) + "px";
 
-  preview.style.display = "none";
-
-  previewImage.src = "";
-
-}
+  }
+);
 
 
 /* ADD MESSAGE */
@@ -492,63 +484,200 @@ function addMessage(text,type){
   message.className =
     "message " + type;
 
-  message.innerHTML =
-    '<div class="bubble">' +
-    text +
-    '</div>';
+  const bubble =
+    document.createElement("div");
+
+  bubble.className =
+    "bubble";
+
+  bubble.textContent = text;
+
+  message.appendChild(bubble);
 
   chat.appendChild(message);
 
   chat.scrollTop =
     chat.scrollHeight;
+
 }
 
 
-/* SEND */
+/* TYPING */
 
-function sendMessage(){
+function showTyping(){
+
+  const message =
+    document.createElement("div");
+
+  message.className =
+    "message ai";
+
+  message.id =
+    "typingMessage";
+
+  const bubble =
+    document.createElement("div");
+
+  bubble.className =
+    "bubble";
+
+  bubble.innerHTML =
+    '<div class="typing">' +
+      '<span></span>' +
+      '<span></span>' +
+      '<span></span>' +
+    '</div>';
+
+  message.appendChild(bubble);
+
+  chat.appendChild(message);
+
+  chat.scrollTop =
+    chat.scrollHeight;
+
+}
+
+
+/* REMOVE TYPING */
+
+function removeTyping(){
+
+  const typing =
+    document.getElementById(
+      "typingMessage"
+    );
+
+  if(typing){
+    typing.remove();
+  }
+
+}
+
+
+/* SEND MESSAGE */
+
+async function sendMessage(){
 
   const text =
     question.value.trim();
 
-  if(!text && !selectedImage){
-
-    alert("Please type a question or upload a photo.");
-
+  if(!text){
     return;
-
   }
 
-  if(text){
+  /* Show user message */
 
-    addMessage(text,"user");
+  addMessage(
+    text,
+    "user"
+  );
 
-  }
-
-  if(selectedImage){
-
-    addMessage(
-      "📷 Photo uploaded",
-      "user"
-    );
-
-  }
+  /* Clear input */
 
   question.value = "";
 
-  /*
-    AI BACKEND WILL BE CONNECTED
-    IN THE NEXT STEP.
-  */
+  question.style.height =
+    "auto";
 
-  setTimeout(function(){
+  /* Disable button */
+
+  sendButton.disabled =
+    true;
+
+  /* Show thinking */
+
+  showTyping();
+
+  try{
+
+    const response =
+      await fetch(
+        WORKER_URL,
+        {
+          method:"POST",
+
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
+
+          body:JSON.stringify({
+            message:text
+          })
+        }
+      );
+
+
+    const data =
+      await response.json();
+
+
+    removeTyping();
+
+
+    if(
+      response.ok &&
+      data.message
+    ){
+
+      addMessage(
+        data.message,
+        "ai"
+      );
+
+    }
+
+    else if(
+      response.ok &&
+      data.response
+    ){
+
+      addMessage(
+        data.response,
+        "ai"
+      );
+
+    }
+
+    else{
+
+      addMessage(
+        "Sorry, RKB AI could not process your message.",
+        "ai"
+      );
+
+      console.log(
+        "Worker response:",
+        data
+      );
+
+    }
+
+  }
+
+  catch(error){
+
+    removeTyping();
 
     addMessage(
-      "🤖 Your question has been received. AI connection will be added in the next step.",
+      "Unable to connect to RKB AI. Please try again.",
       "ai"
     );
 
-  },700);
+    console.error(
+      "RKB AI Error:",
+      error
+    );
+
+  }
+
+
+  /* Enable button */
+
+  sendButton.disabled =
+    false;
+
+  question.focus();
 
 }
 

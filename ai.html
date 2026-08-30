@@ -117,6 +117,31 @@ header{
   font-size:14px;
 }
 
+.language-box{
+  padding:12px 15px;
+  background:#eef6ff;
+  border-bottom:1px solid #dbeafe;
+}
+
+.language-box label{
+  display:block;
+  font-size:12px;
+  font-weight:bold;
+  color:#0753ad;
+  margin-bottom:6px;
+}
+
+.language-box select{
+  width:100%;
+  padding:10px 12px;
+  border:1px solid #bfdbfe;
+  border-radius:10px;
+  background:white;
+  color:#111827;
+  font-size:14px;
+  outline:none;
+}
+
 .chat{
   height:430px;
   overflow-y:auto;
@@ -349,6 +374,36 @@ footer{
 
     </div>
 
+    <!-- LANGUAGE SELECTOR -->
+
+    <div class="language-box">
+
+      <label for="languageSelect">
+        🌐 Answer Language
+      </label>
+
+      <select id="languageSelect">
+
+        <option value="detect">
+          🌐 Detect Language
+        </option>
+
+        <option value="english">
+          🇬🇧 English
+        </option>
+
+        <option value="hindi">
+          🇮🇳 Hindi
+        </option>
+
+        <option value="odia">
+          🟠 Odia
+        </option>
+
+      </select>
+
+    </div>
+
     <div class="chat" id="chat">
 
       <div class="message ai">
@@ -410,9 +465,9 @@ How can I help you today?</div>
     <h3>🤖 RKB AI</h3>
 
     <p>
-      Ask your questions in English, Hindi, Odia or
-      another language. RKB AI will automatically
-      detect your language and respond accordingly.
+      Select your answer language above. You can ask your
+      questions in English, Hindi, Odia or another language.
+      RKB AI will provide useful and accurate answers.
     </p>
 
   </div>
@@ -426,7 +481,7 @@ How can I help you today?</div>
 <script>
 
 /* =========================================
-   STEP 1 — CORRECT CLOUDFLARE WORKER URL
+   CLOUDFLARE WORKER URL
    ========================================= */
 
 const API_URL =
@@ -454,6 +509,9 @@ const chat =
 
 const sendBtn =
   document.getElementById("sendBtn");
+
+const languageSelect =
+  document.getElementById("languageSelect");
 
 
 /* =========================================
@@ -570,14 +628,13 @@ function removeLoading(){
 
 
 /* =========================================
-   STEP 2 — SEND MESSAGE
+   SEND MESSAGE
    ========================================= */
 
 async function sendMessage(){
 
   const text =
     question.value.trim();
-
 
   if(!text && !selectedImage){
 
@@ -623,6 +680,10 @@ async function sendMessage(){
 
   try{
 
+    const selectedLanguage =
+      languageSelect.value;
+
+
     const response =
       await fetch(
         API_URL,
@@ -635,9 +696,14 @@ async function sendMessage(){
           },
 
           body:JSON.stringify({
+
             message:
               text ||
-              "Please help me with this photo."
+              "Please help me with this photo.",
+
+            language:
+              selectedLanguage
+
           })
         }
       );
@@ -659,7 +725,6 @@ async function sendMessage(){
     if(!response.ok){
 
       throw new Error(
-        data.details ||
         data.error ||
         "Worker error"
       );

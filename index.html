@@ -83,7 +83,7 @@ header{
 nav{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:8px;
 }
 
 nav a{
@@ -101,6 +101,22 @@ nav a{
 nav a:hover,
 nav a.active{
   background:#075dcc;
+}
+
+/* ================= RKB AI HEADER BUTTON ================= */
+
+.ai-nav{
+  background:linear-gradient(135deg,#6d28d9,#9333ea);
+  border:1px solid #a855f7;
+  padding:10px 15px !important;
+  font-size:14px !important;
+  border-radius:20px !important;
+  box-shadow:0 3px 10px rgba(124,58,237,.35);
+}
+
+.ai-nav:hover{
+  background:linear-gradient(135deg,#7c3aed,#a855f7) !important;
+  transform:translateY(-2px);
 }
 
 /* ================= HERO ================= */
@@ -536,12 +552,17 @@ footer p{
   nav{
     width:100%;
     justify-content:center;
-    gap:2px;
+    gap:4px;
+    flex-wrap:wrap;
   }
 
   nav a{
     padding:12px 10px;
     font-size:14px;
+  }
+
+  .ai-nav{
+    padding:10px 14px !important;
   }
 
   .hero{
@@ -642,9 +663,23 @@ footer p{
   </div>
 
   <nav>
-    <a href="index.html" class="active">🏠 Home</a>
-    <a href="#business">▦ Services</a>
-    <a href="#contact">📞 Contact</a>
+
+    <a href="index.html" class="active">
+      🏠 Home
+    </a>
+
+    <a href="#business">
+      ▦ Services
+    </a>
+
+    <a href="#contact">
+      📞 Contact
+    </a>
+
+    <a href="ai.html" class="ai-nav">
+      ✨ AI
+    </a>
+
   </nav>
 
 </header>
@@ -686,7 +721,9 @@ footer p{
 <section class="business" id="business">
 
   <div class="section-title">
+
     <h2>Our Businesses</h2>
+
   </div>
 
   <div class="business-cards">
